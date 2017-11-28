@@ -1,0 +1,37 @@
+#!/bin/bash
+
+RUN_DIR=/var/vcap/sys/run/backup-api
+LOG_DIR=/var/vcap/sys/log/backup-api
+JOB_DIR=/var/vcap/jobs/backup-api
+CONFIGFILE="${JOB_DIR}/config/hooks.json"
+PIDFILE=${RUN_DIR}/pid
+
+case $1 in
+
+  start)
+    mkdir -p $RUN_DIR $LOG_DIR
+    chown -R vcap:vcap $RUN_DIR $LOG_DIR
+
+    echo $$ > $PIDFILE
+
+    export PATH=$PATH:/var/vcap/packages/scripts/bin:/var/vcap/packages/rclone/bin:/var/vcap/packages/webhook/bin
+
+    {
+        exec chpst -v -u vcap:vcap webhook -hooks ${CONFIGFILE} -verbose
+    } \
+    >>$LOG_DIR/stdout.log \
+    2>>$LOG_DIR/stderr.log
+
+    ;;
+
+
+  stop)
+    kill -9 `cat $PIDFILE`
+    rm -f $PIDFILE
+
+    ;;
+
+  *)
+    echo "Usage: ctrl {start|stop}" ;;
+
+esac

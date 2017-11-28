@@ -1,0 +1,5 @@
+check process backup-api
+  with pidfile /var/vcap/sys/run/backup-api/pid
+  start program "/var/vcap/jobs/backup-api/bin/ctrl start"
+  stop program "/var/vcap/jobs/backup-api/bin/ctrl stop"
+  group vcap

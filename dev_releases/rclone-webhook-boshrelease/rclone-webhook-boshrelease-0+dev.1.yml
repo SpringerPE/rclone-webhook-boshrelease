@@ -1,0 +1,21 @@
+---
+packages:
+- name: rclone
+  version: 8466c3ed83e627a9eb578a8af51cf29b2496f84b
+  fingerprint: 8466c3ed83e627a9eb578a8af51cf29b2496f84b
+  sha1: 3204e169696b312d5f9ed544fb1263147f5ad509
+  dependencies: []
+- name: webhook
+  version: 6184826eca7a8ad098eec8cc79347ac998500af1
+  fingerprint: 6184826eca7a8ad098eec8cc79347ac998500af1
+  sha1: 35aa184f95f6dadf84afcf1c6425f945d8d61f36
+  dependencies: []
+jobs:
+- name: backup-api
+  version: fd99a4cc3e3f62fe98df03298828ef4ed9acad74
+  fingerprint: fd99a4cc3e3f62fe98df03298828ef4ed9acad74
+  sha1: 14a625feb05885b6ccf6115dc4bd295cddf89000
+commit_hash: de6a7110
+uncommitted_changes: true
+name: rclone-webhook-boshrelease
+version: 0+dev.1

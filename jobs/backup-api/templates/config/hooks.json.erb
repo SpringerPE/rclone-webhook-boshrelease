@@ -1,0 +1,151 @@
+[
+    {
+    "id": "rclone-sync",
+    "execute-command": "rclone-sync.sh",
+    "command-working-directory": "/tmp",
+    "include-command-output-in-response": true,
+    "pass-arguments-to-command": [{
+    "source": "url",
+    "name": "localdest"
+    },{
+    "source": "url",
+    "name": "remotedest"
+    }],
+    "trigger-rule":{
+#    "or":[
+      <% if_p('backup-api.token') do |token| %>
+      "match":
+      {
+        "type": "value",
+        "value": "<%= token %>",
+        "parameter":
+        {
+          "source": "header",
+          "name": "Token"
+        }
+      },
+      <% end %>
+#      { "match":
+#        {
+#        "type": "ip-whitelist",
+#        "ip-range": "0.0.0.0/0"
+#        }
+#      }
+#    ]
+  }
+},
+
+{
+    "id": "rclone-ls",
+    "execute-command": "rclone-ls.sh",
+    "command-working-directory": "/tmp",
+    "include-command-output-in-response": true,
+    "pass-arguments-to-command": [{
+    "source": "url",
+    "name": "remote"
+    },{
+    "source": "url",
+    "name": "path"
+    }],
+    "trigger-rule":{
+    "or":[
+      <% if_p('backup-api.token') do |token| %>
+      "match":
+      {
+        "type": "value",
+        "value": "<%= token %>",
+        "parameter":
+        {
+          "source": "header",
+          "name": "Token"
+        }
+      },
+      <% end %>
+      { "match":
+        {
+        "type": "ip-whitelist",
+        "ip-range": "0.0.0.0/0"
+        }
+      }
+    ]
+  }
+},
+
+{
+    "id": "rclone-delete",
+    "execute-command": "rclone-delete.sh",
+    "command-working-directory": "/tmp",
+    "include-command-output-in-response": true,
+    "pass-arguments-to-command": [{
+    "source": "url",
+    "name": "remote"
+    },{
+    "source": "url",
+    "name": "path"
+    },{
+    "source": "url",
+    "name": "flags"
+    }],
+    "trigger-rule":{
+    "or":[
+      <% if_p('backup-api.token') do |token| %>
+      "match":
+      {
+        "type": "value",
+        "value": "<%= token %>",
+        "parameter":
+        {
+          "source": "header",
+          "name": "Token"
+        }
+      },
+      <% end %>
+      { "match":
+        {
+        "type": "ip-whitelist",
+        "ip-range": "0.0.0.0/0"
+        }
+      }
+    ]
+  }
+},
+
+{
+    "id": "rclone-mkdir",
+    "execute-command": "rclone-mkdir.sh",
+    "command-working-directory": "/tmp",
+    "include-command-output-in-response": true,
+    "pass-arguments-to-command": [{
+    "source": "url",
+    "name": "remote"
+    },{
+    "source": "url",
+    "name": "path"
+    },{
+    "source": "url",
+    "name": "flags"
+    }],
+    "trigger-rule":{
+    "or":[
+      <% if_p('backup-api.token') do |token| %>
+      "match":
+      {
+        "type": "value",
+        "value": "<%= token %>",
+        "parameter":
+        {
+          "source": "header",
+          "name": "Token"
+        }
+      },
+      <% end %>
+      { "match":
+        {
+        "type": "ip-whitelist",
+        "ip-range": "0.0.0.0/0"
+        }
+      }
+    ]
+  }
+}
+]

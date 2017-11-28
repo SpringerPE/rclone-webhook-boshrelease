@@ -1,0 +1,26 @@
+---
+name: backup-api
+description: ad hoc vm backup to gcp
+
+templates:  
+  pre-start: bin/pre-start
+  bin/ctrl.erb: bin/ctrl
+  config/hooks.json.erb: config/hooks.json
+  config/rclone.conf.erb: config/rclone.conf
+  config/gcp.json: config/gcp.json
+
+packages:
+- rclone
+- scripts
+- webhook
+
+properties:
+  back-api.token:
+    description: token for user authentication to webhook
+    default: default
+  rclone.config:
+    description: rclone configuration for GCP
+    default: default
+  rclone.gcpkey:
+    description: key for rclone to authorize with GCP, GCP service account private key
+    default: default
