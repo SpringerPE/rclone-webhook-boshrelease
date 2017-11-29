@@ -2,7 +2,7 @@
     {
     "id": "rclone-sync",
     "execute-command": "rclone-sync.sh",
-    "command-working-directory": "/tmp",
+    "command-working-directory": "/var/vcap/packages/scripts/bin/scripts",
     "include-command-output-in-response": true,
     "pass-arguments-to-command": [{
     "source": "url",
@@ -38,7 +38,7 @@
 {
     "id": "rclone-ls",
     "execute-command": "rclone-ls.sh",
-    "command-working-directory": "/tmp",
+    "command-working-directory": "/var/vcap/packages/scripts/bin/scripts",
     "include-command-output-in-response": true,
     "pass-arguments-to-command": [{
     "source": "url",
@@ -74,7 +74,7 @@
 {
     "id": "rclone-delete",
     "execute-command": "rclone-delete.sh",
-    "command-working-directory": "/tmp",
+    "command-working-directory": "/var/vcap/packages/scripts/bin/scripts",
     "include-command-output-in-response": true,
     "pass-arguments-to-command": [{
     "source": "url",
@@ -113,7 +113,7 @@
 {
     "id": "rclone-mkdir",
     "execute-command": "rclone-mkdir.sh",
-    "command-working-directory": "/tmp",
+    "command-working-directory": "/var/vcap/packages/scripts/bin/scripts",
     "include-command-output-in-response": true,
     "pass-arguments-to-command": [{
     "source": "url",

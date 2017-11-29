@@ -15,12 +15,12 @@ packages:
 - webhook
 
 properties:
-  back-api.token:
+  backup-api.token:
     description: token for user authentication to webhook
     default: default
-  rclone.config:
+  backup-api.rclone.config:
     description: rclone configuration for GCP
     default: default
-  rclone.gcpkey:
+  backup-api.rclone.gcpkey:
     description: key for rclone to authorize with GCP, GCP service account private key
     default: default
