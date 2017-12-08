@@ -1,5 +1,5 @@
 # abort script on any command that exits with a non zero value
 set -e
 mkdir ${BOSH_INSTALL_TARGET}/bin
-cp -a scripts ${BOSH_INSTALL_TARGET}/bin
+cp -v scripts/* ${BOSH_INSTALL_TARGET}/bin
 chmod -R +x ${BOSH_INSTALL_TARGET}/bin

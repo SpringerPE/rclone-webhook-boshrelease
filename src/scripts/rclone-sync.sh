@@ -9,7 +9,7 @@ local files to be transferred: $1
 destination path: gcp:ee-rclone-backup/$2
 
 "
-rclone sync -v $1 gcp:ee-rclone-backup/$2
+rclone sync -v $1 gcp:ee-rclone-backup/$2 --config /var/vcap/jobs/backup-api/config/rclone.conf
 echo "
 ***********"
 
